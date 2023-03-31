@@ -1,10 +1,12 @@
 // products.routes.ts
 import { Router } from "express";
-import ProductsController from "../controllers/UsersController";
+import UsersController from "../controllers/UsersController";
 
-const productsRouter = Router();
-const productsController = new ProductsController();
+const usersRouter = Router();
+const usersController = new UsersController();
 
-productsRouter.post("/", productsController.create);
+usersRouter.post("/", usersController.create);
+usersRouter.get("/", usersController.getAllUsers);
 
-export default productsRouter;
+
+export default usersRouter;

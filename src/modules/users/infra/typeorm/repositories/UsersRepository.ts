@@ -1,11 +1,8 @@
 // UsersRepository.ts
 import { getRepository, Repository } from "typeorm";
 import User from "../entities/User";
+import IUsersRepository from "../../../repositories/IUsersRepository";
 import { ICreateUserDTO } from "../../../repositories/IUsersRepository";
-
-interface IUsersRepository {
-    create(data: ICreateUserDTO): Promise<User>;
-}
 
 class UsersRepository implements IUsersRepository {
     private ormRepository: Repository<User>;
@@ -24,6 +21,12 @@ class UsersRepository implements IUsersRepository {
         await this.ormRepository.save(user);
 
         return user;
+    }
+
+    public async findAll(): Promise<User[]> {
+        const users = await this.ormRepository.find();
+
+        return users;
     }
 }
 
