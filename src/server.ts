@@ -1,4 +1,3 @@
-// server.ts
 import 'reflect-metadata'
 import express from 'express';
 
