@@ -16,12 +16,12 @@ export class CreateUserService {
     ) { }
 
     async execute({ name, email, password }: IRequest): Promise<User> {
-        const product = await this.usersRepository.create({
+        const users = await this.usersRepository.create({
             name,
             email,
             password
         });
 
-        return product;
+        return users;
     }
 }
