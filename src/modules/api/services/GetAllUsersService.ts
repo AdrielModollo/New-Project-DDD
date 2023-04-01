@@ -10,9 +10,7 @@ export class GetAllUsersService {
     ) { }
 
     async execute(): Promise<User[]> {
-        console.log("Getting all users from repository");
         const users = await this.usersRepository.getAllUsers();
-        console.log("Returned users", users);
         return users;
     }
 }

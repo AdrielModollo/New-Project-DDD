@@ -17,10 +17,8 @@ export class CreateUserService {
     ) { }
 
     async execute({ name, email, password }: IRequest): Promise<User> {
-        console.log(email)
         const checkUserExists = await this.usersRepository.findByEmail(email);
 
-        console.log(checkUserExists)
         if (checkUserExists) {
             throw new Error('Email address already used.');
         }

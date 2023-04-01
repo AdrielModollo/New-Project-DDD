@@ -1,17 +1,13 @@
-// UsersRepository.ts
 import { getRepository, Repository } from "typeorm";
 import User from "../entities/User";
 import IUsersRepository from "../../../repositories/IUsersRepository";
-import { ICreateUserDTO } from "../../../dtos/ICreateDTO";
+import { ICreateUserDTO } from "../../../dtos/ICreateUserDTO";
 
 class UsersRepository implements IUsersRepository {
     private ormRepository: Repository<User>;
 
     constructor() {
         this.ormRepository = getRepository(User);
-    }
-    find(): Promise<User[]> {
-        throw new Error("Method not implemented.");
     }
 
     public async create({ name, email, password }: ICreateUserDTO): Promise<User> {
@@ -27,9 +23,7 @@ class UsersRepository implements IUsersRepository {
     }
 
     public async getAllUsers(): Promise<User[]> {
-        console.log("Getting all users from database");
         const users = await this.ormRepository.find();
-        console.log("Found users", users);
         return users;
     }
 
