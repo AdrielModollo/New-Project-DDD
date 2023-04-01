@@ -22,6 +22,8 @@ export class CreateUserService {
             password
         });
 
+        console.log('Service', users)
+
         return users;
     }
 }
