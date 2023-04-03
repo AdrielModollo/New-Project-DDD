@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
 import { hash } from 'bcryptjs';
-import User from "../infra/typeorm/entities/User";
-import IUsersRepository from "../repositories/IUsersRepository";
-import { HttpException, HttpStatusCode } from "../../../shared/exceptions/HttpException";
+import User from "../../infra/typeorm/entities/User";
+import IUsersRepository from "../../repositories/IUsersRepository";
+import { HttpException, HttpStatusCode } from "../../../../shared/exceptions/HttpException";
 
 type IRequest = {
     name: string;

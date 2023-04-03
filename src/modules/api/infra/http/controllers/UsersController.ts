@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import httpExceptionMiddleware from "../middlewares/errorHandlerMiddleware";
-import { CreateUserService } from "../../../services/CreateUsersService";
-import { GetAllUsersService } from "../../../services/GetAllUsersService";
-import { FindByEmailUsersService } from "../../../services/FindByEmailUsersService";
+import { CreateUserService } from "../../../services/users/CreateUsersService";
+import { GetAllUsersService } from "../../../services/users/GetAllUsersService";
+import { FindByEmailUsersService } from "../../../services/users/FindByEmailUsersService";
 
 export default class UsersController {
     public async create(request: Request, response: Response, next): Promise<Response> {
