@@ -6,11 +6,15 @@ import { GetAllUsersService } from "../../../services/users/GetAllUsersService";
 import { FindByEmailUsersService } from "../../../services/users/FindByEmailUsersService";
 import { UpdateUserService } from "../../../services/users/UpdateUsersService";
 import { SoftDeleteByEmailService } from "../../../services/users/SoftDeleteByEmailService";
+import { createUserSchema } from "../schemas/users/createUserSchema";
+import { softDeleteByEmailSchema } from "../schemas/users/softDeleteByEmailSchema";
+import { querySchema, bodySchema } from '../schemas/users/updateUserSchema';
+
 
 export default class UsersController {
     public async create(request: Request, response: Response, next): Promise<Response> {
         try {
-            const { name, email, password } = request.body;
+            const { name, email, password } = await createUserSchema.validateAsync(request.body);
 
             const createUserService = container.resolve(CreateUserService);
 
@@ -36,7 +40,7 @@ export default class UsersController {
 
     public async findByEmailUsers(request: Request, response: Response, next): Promise<Response> {
         try {
-            const { email } = request.params;
+            const email = request.query.email as string;
 
             const findByEmail = container.resolve(FindByEmailUsersService);
 
@@ -50,16 +54,12 @@ export default class UsersController {
 
     public async updateUsers(request: Request, response: Response, next): Promise<Response> {
         try {
-            const { email } = request.params;
-            const { name, password } = request.body;
+            const { query, body } = request;
+            const { email } = await querySchema.validateAsync(query);
+            const { name, password } = await bodySchema.validateAsync(body);
 
             const updateUserService = container.resolve(UpdateUserService);
-
-            const user = await updateUserService.execute({
-                email,
-                name,
-                password,
-            });
+            const user = await updateUserService.execute({ email, name, password });
 
             return response.json(user);
         } catch (error) {
@@ -67,9 +67,10 @@ export default class UsersController {
         }
     }
 
+
     public async softDeleteUser(request: Request, response: Response, next): Promise<Response> {
         try {
-            const { email } = request.params;
+            const { email } = await softDeleteByEmailSchema.validateAsync(request.query);
 
             const softDeleteUserService = container.resolve(SoftDeleteByEmailService);
 

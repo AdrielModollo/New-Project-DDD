@@ -6,8 +6,8 @@ const usersController = new UsersController();
 
 usersRouter.post("/", usersController.create);
 usersRouter.get("/", usersController.getAllUsers);
-usersRouter.get("/:email", usersController.findByEmailUsers);
-usersRouter.patch("/:email", usersController.updateUsers);
-usersRouter.delete("/:email", usersController.softDeleteUser);
+usersRouter.get("/email", usersController.findByEmailUsers);
+usersRouter.patch("/", usersController.updateUsers);
+usersRouter.delete("/", usersController.softDeleteUser);
 
 export default usersRouter;
