@@ -4,6 +4,7 @@ import httpExceptionMiddleware from "../middlewares/errorHandlerMiddleware";
 import { CreateUserService } from "../../../services/users/CreateUsersService";
 import { GetAllUsersService } from "../../../services/users/GetAllUsersService";
 import { FindByEmailUsersService } from "../../../services/users/FindByEmailUsersService";
+import { UpdateUserService } from "../../../services/users/UpdateUsersService";
 
 export default class UsersController {
     public async create(request: Request, response: Response, next): Promise<Response> {
@@ -41,6 +42,25 @@ export default class UsersController {
             const users = await findByEmail.execute(email);
 
             return response.json(users);
+        } catch (error) {
+            return httpExceptionMiddleware(error, request, response, next);
+        }
+    }
+
+    public async updateUsers(request: Request, response: Response, next): Promise<Response> {
+        try {
+            const { email } = request.params;
+            const { name, password } = request.body;
+
+            const updateUserService = container.resolve(UpdateUserService);
+
+            const user = await updateUserService.execute({
+                email,
+                name,
+                password,
+            });
+
+            return response.json(user);
         } catch (error) {
             return httpExceptionMiddleware(error, request, response, next);
         }

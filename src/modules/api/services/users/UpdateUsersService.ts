@@ -2,31 +2,32 @@ import { inject, injectable } from "tsyringe";
 import { hash } from 'bcryptjs';
 import User from "../../infra/typeorm/entities/User";
 import IUsersRepository from "../../repositories/IUsersRepository";
-import { HttpException, HttpStatusCode } from "../../../../shared/exceptions/HttpException";
 import { IRequest } from "../../dtos/IRequestDTO";
 
 @injectable()
-export class CreateUserService {
+export class UpdateUserService {
     constructor(
         @inject('UsersRepository')
         private usersRepository: IUsersRepository,
     ) { }
 
-    async execute({ name, email, password }: IRequest): Promise<User> {
-        const userExists = await this.usersRepository.findByEmail(email);
+    async execute({ email, name, password }: IRequest): Promise<User> {
+        const user = await this.usersRepository.findByEmail(email);
 
-        if (userExists) {
-            throw new HttpException(HttpStatusCode.CONFLICT, 'Email address already used.');
+        if (!user) {
+            throw new Error("User not found");
         }
 
         const hashedPassword = await hash(password, 8);
 
-        const user = await this.usersRepository.create({
+        const updatedUser = {
+            ...user,
             name,
-            email,
             password: hashedPassword,
-        });
+        };
 
-        return user;
+        const result = await this.usersRepository.updateUsers(updatedUser.id, updatedUser);
+
+        return result;
     }
 }
