@@ -32,7 +32,6 @@ class UsersRepository implements IUsersRepository {
         const user = await this.ormRepository.findOne({
             where: { email },
         });
-        console.log(email)
         return user;
     }
 
@@ -48,7 +47,17 @@ class UsersRepository implements IUsersRepository {
         return updatedUser;
     }
 
+    public async softDeleteByEmail(email: string): Promise<User | undefined> {
+        const user = await this.ormRepository.findOne({
+            where: { email, deleted_at: null },
+        });
 
+        user.deleted_at = new Date();
+
+        const result = await this.ormRepository.save(user);
+
+        return result
+    }
 }
 
 

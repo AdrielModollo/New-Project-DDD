@@ -8,5 +8,6 @@ usersRouter.post("/", usersController.create);
 usersRouter.get("/", usersController.getAllUsers);
 usersRouter.get("/:email", usersController.findByEmailUsers);
 usersRouter.patch("/:email", usersController.updateUsers);
+usersRouter.delete("/:email", usersController.softDeleteUser);
 
 export default usersRouter;

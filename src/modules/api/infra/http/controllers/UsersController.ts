@@ -5,6 +5,7 @@ import { CreateUserService } from "../../../services/users/CreateUsersService";
 import { GetAllUsersService } from "../../../services/users/GetAllUsersService";
 import { FindByEmailUsersService } from "../../../services/users/FindByEmailUsersService";
 import { UpdateUserService } from "../../../services/users/UpdateUsersService";
+import { SoftDeleteByEmailService } from "../../../services/users/SoftDeleteByEmailService";
 
 export default class UsersController {
     public async create(request: Request, response: Response, next): Promise<Response> {
@@ -59,6 +60,20 @@ export default class UsersController {
                 name,
                 password,
             });
+
+            return response.json(user);
+        } catch (error) {
+            return httpExceptionMiddleware(error, request, response, next);
+        }
+    }
+
+    public async softDeleteUser(request: Request, response: Response, next): Promise<Response> {
+        try {
+            const { email } = request.params;
+
+            const softDeleteUserService = container.resolve(SoftDeleteByEmailService);
+
+            const user = await softDeleteUserService.execute({ email });
 
             return response.json(user);
         } catch (error) {

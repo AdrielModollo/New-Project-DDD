@@ -7,6 +7,7 @@ export default interface IUsersRepository {
     getAllUsers(): Promise<User[]>;
     findByEmail(email: string): Promise<User | undefined>;
     updateUsers(id: string, data: Partial<IUpdateUserDTO>): Promise<User | undefined>;
+    softDeleteByEmail(email: string): Promise<User | undefined>;
 }
 
 
