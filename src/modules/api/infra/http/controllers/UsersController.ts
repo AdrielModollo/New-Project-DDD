@@ -2,20 +2,25 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { CreateUserService } from "../../../services/CreateUsersService";
 import { GetAllUsersService } from "../../../services/GetAllUsersService";
+import httpExceptionMiddleware from "../middlewares/errorHandlerMiddleware";
 
 export default class UsersController {
-    public async create(request: Request, response: Response): Promise<Response> {
-        const { name, email, password } = request.body;
+    public async create(request: Request, response: Response, next): Promise<Response> {
+        try {
+            const { name, email, password } = request.body;
 
-        const createUserService = container.resolve(CreateUserService);
+            const createUserService = container.resolve(CreateUserService);
 
-        const user = await createUserService.execute({
-            name,
-            email,
-            password
-        });
+            const user = await createUserService.execute({
+                name,
+                email,
+                password,
+            });
 
-        return response.json(user);
+            return response.status(201).json(user);
+        } catch (error) {
+            return httpExceptionMiddleware(error, request, response, next);
+        }
     }
 
     public async getAllUsers(request: Request, response: Response): Promise<Response> {
