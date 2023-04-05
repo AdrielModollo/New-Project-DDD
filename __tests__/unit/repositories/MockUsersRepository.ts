@@ -61,8 +61,14 @@ class MockUsersRepository implements IUsersRepository {
     }
 
     async softDeleteByEmail(email: string): Promise<User> {
-        // TODO: Implement
-        throw new Error("Method not implemented.");
+        const user = await this.findByEmail(email);
+
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        user.deleted_at = new Date();
+        return user;
     }
 }
 
