@@ -1,35 +1,14 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import httpExceptionMiddleware from "../middlewares/errorHandlerMiddleware";
-import { CreateUserService } from "../../../services/users/CreateUsersService";
 import { GetAllUsersService } from "../../../services/users/GetAllUsersService";
 import { FindByEmailUsersService } from "../../../services/users/FindByEmailUsersService";
 import { UpdateUserService } from "../../../services/users/UpdateUsersService";
 import { SoftDeleteByEmailService } from "../../../services/users/SoftDeleteByEmailService";
-import { createUserSchema } from "../schemas/users/createUserSchema";
 import { softDeleteByEmailSchema } from "../schemas/users/softDeleteByEmailSchema";
 import { querySchema, bodySchema } from '../schemas/users/updateUserSchema';
 
-
 export default class UsersController {
-    public async create(request: Request, response: Response, next): Promise<Response> {
-        try {
-            const { name, email, password } = await createUserSchema.validateAsync(request.body);
-
-            const createUserService = container.resolve(CreateUserService);
-
-            const user = await createUserService.execute({
-                name,
-                email,
-                password,
-            });
-
-            return response.status(201).json(user);
-        } catch (error) {
-            return httpExceptionMiddleware(error, request, response, next);
-        }
-    }
-
     public async getAllUsers(request: Request, response: Response): Promise<Response> {
         const listUsersService = container.resolve(GetAllUsersService);
 
