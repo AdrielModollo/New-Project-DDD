@@ -1,6 +1,7 @@
 module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
+    setupFilesAfterEnv: ["reflect-metadata"],
     roots: [
         '<rootDir>/src',
         '<rootDir>/__tests__'
