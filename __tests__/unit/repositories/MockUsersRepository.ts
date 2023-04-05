@@ -32,9 +32,28 @@ class MockUsersRepository implements IUsersRepository {
     }
 
     async getAllUsers(): Promise<User[]> {
-        // TODO: Implement
-        throw new Error("Method not implemented.");
+        return [
+            {
+                id: '1',
+                name: 'John Doe',
+                email: 'johndoe@example.com',
+                password: 'password',
+                created_at: new Date(),
+                updated_at: new Date(),
+                deleted_at: null
+            },
+            {
+                id: '2',
+                name: 'Jane Smith',
+                email: 'janesmith@example.com',
+                password: 'password',
+                created_at: new Date(),
+                updated_at: new Date(),
+                deleted_at: null
+            },
+        ];
     }
+
 
     async updateUsers(id: string, data: Partial<IUpdateUserDTO>): Promise<User> {
         // TODO: Implement
