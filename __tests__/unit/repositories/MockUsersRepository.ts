@@ -56,9 +56,28 @@ class MockUsersRepository implements IUsersRepository {
 
 
     async updateUsers(id: string, data: Partial<IUpdateUserDTO>): Promise<User> {
-        // TODO: Implement
-        throw new Error("Method not implemented.");
+        const user = await this.findById(id);
+
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        const updatedUser = {
+            ...user,
+            ...data,
+        };
+
+        this.users = this.users.map((u) => {
+            if (u.id === id) {
+                return updatedUser;
+            }
+
+            return u;
+        });
+
+        return updatedUser;
     }
+
 
     async softDeleteByEmail(email: string): Promise<User> {
         const user = await this.findByEmail(email);
