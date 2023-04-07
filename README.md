@@ -122,6 +122,12 @@ Este comando irá criar e iniciar o container Docker da aplicação e expor a po
 
 Acesse http://localhost:3000 em um navegador para acessar a aplicação.
 
+# Testes unitários
+
+Para inicializar os testes unitários com base no package.json, basta seguir os seguintes passos:
+
+- yarn test
+
 # TypeOrm
 
 - yarn typeorm migration:create -n NameModel
