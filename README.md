@@ -66,7 +66,9 @@ Para inicializar a API sem usar Docker e com Yarn, basta seguir os seguintes pas
 
 - 1° Certifique-se de que você possui o Yarn instalado na sua máquina. E instale as dependências do projeto usando o comando yarn:
 
+````
 yarn
+````
 
 - 2°Copie o arquivo .env.example para um arquivo .env:
 
