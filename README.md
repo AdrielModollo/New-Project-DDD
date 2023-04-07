@@ -64,23 +64,23 @@ Em resumo, a pasta shared contém código compartilhado entre vários módulos d
 
 Para inicializar a API sem usar Docker e com Yarn, basta seguir os seguintes passos:
 
-1° Certifique-se de que você possui o Yarn instalado na sua máquina. E instale as dependências do projeto usando o comando yarn:
+- 1° Certifique-se de que você possui o Yarn instalado na sua máquina. E instale as dependências do projeto usando o comando yarn:
 
 yarn
 
-2°Copie o arquivo .env.example para um arquivo .env:
+- 2°Copie o arquivo .env.example para um arquivo .env:
 
 cp .env.example .env
 
 Configure as variáveis de ambiente da aplicação no arquivo .env criado.
 
-3° Execute as migrações do banco de dados para criar as tabelas necessárias:
+- 3° Execute as migrações do banco de dados para criar as tabelas necessárias:
 
 yarn typeorm migration:run
 
 Este comando irá executar as migrações do banco de dados.
 
-4°Inicie o servidor da aplicação com o comando abaixo:
+- 4°Inicie o servidor da aplicação com o comando abaixo:
 
 yarn dev
 
@@ -92,39 +92,40 @@ Com estes passos, você será capaz de executar a API de forma padrão, sem usar
 
 Para inicializar a aplicação usando Docker, basta seguir os seguintes passos:
 
-1° Certifique-se de que você possui o Docker e o yarn instalados na sua máquina. E Instale as dependências do projeto usando o comando "yarn".
+- 1° Certifique-se de que você possui o Docker e o yarn instalados na sua máquina. E Instale as dependências do projeto usando o comando "yarn".
 
-2° Clone o repositório da aplicação para a sua máquina local:
+- 2° Clone o repositório da aplicação para a sua máquina local:
 
 git clone https://github.com/AdrielModollo/New-Project-DDD.git
 
-3° Acesse a pasta do projeto:
+- 3° Acesse a pasta do projeto:
 
 cd New-Project-DDD
 
-4° Copie o arquivo .env.example para um arquivo .env:
+- 4° Copie o arquivo .env.example para um arquivo .env:
 
 cp .env.example .env
 
 Configure as variáveis de ambiente da aplicação no arquivo .env criado.
 
-5° Execute as migrações do banco de dados para criar as tabelas necessárias:
+- 5° Execute as migrações do banco de dados para criar as tabelas necessárias:
 
 docker-compose exec app npm run typeorm migration:run
 
 Este comando irá executar as migrações do banco de dados dentro do container Docker da aplicação.
 
-6° Execute o comando abaixo para criar e iniciar o container Docker da aplicação:
+- 6° Execute o comando abaixo para criar e iniciar o container Docker da aplicação:
 
 "yarn docker"
 
 Este comando irá criar e iniciar o container Docker da aplicação e expor a porta 3000 para acesso externo.
 
 Acesse http://localhost:3000 em um navegador para acessar a aplicação.
+
 # TypeOrm
 
--yarn typeorm migration:create -n NameModel
+- yarn typeorm migration:create -n NameModel
 
--yarn typeorm migration:run
+- yarn typeorm migration:run
 
--yarn typeorm migration:revert
+- yarn typeorm migration:revert
