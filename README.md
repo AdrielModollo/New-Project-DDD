@@ -70,21 +70,24 @@ yarn
 
 - 2°Copie o arquivo .env.example para um arquivo .env:
 
+````
 cp .env.example .env
-
 Configure as variáveis de ambiente da aplicação no arquivo .env criado.
+````
 
 - 3° Execute as migrações do banco de dados para criar as tabelas necessárias:
 
+````
 yarn typeorm migration:run
-
 Este comando irá executar as migrações do banco de dados.
+````
 
 - 4°Inicie o servidor da aplicação com o comando abaixo:
 
+````
 yarn dev
-
 Este comando irá iniciar o servidor da aplicação e expor a porta 3333 para acesso externo.
+````
 
 Com estes passos, você será capaz de executar a API de forma padrão, sem usar Docker e com Yarn. O comando yarn dev está configurado no package.json e pode ser executado com o comando yarn dev.
 
@@ -96,29 +99,36 @@ Para inicializar a aplicação usando Docker, basta seguir os seguintes passos:
 
 - 2° Clone o repositório da aplicação para a sua máquina local:
 
+````
 git clone https://github.com/AdrielModollo/New-Project-DDD.git
+````
 
 - 3° Acesse a pasta do projeto:
 
+````
 cd New-Project-DDD
+````
 
 - 4° Copie o arquivo .env.example para um arquivo .env:
 
+````
 cp .env.example .env
-
 Configure as variáveis de ambiente da aplicação no arquivo .env criado.
+````
 
 - 5° Execute as migrações do banco de dados para criar as tabelas necessárias:
 
+````
 docker-compose exec app npm run typeorm migration:run
-
 Este comando irá executar as migrações do banco de dados dentro do container Docker da aplicação.
+````
 
 - 6° Execute o comando abaixo para criar e iniciar o container Docker da aplicação:
 
+````
 "yarn docker"
-
 Este comando irá criar e iniciar o container Docker da aplicação e expor a porta 3000 para acesso externo.
+````
 
 Acesse http://localhost:3000 em um navegador para acessar a aplicação.
 
