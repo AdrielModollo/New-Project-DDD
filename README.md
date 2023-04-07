@@ -60,7 +60,7 @@ Dentro da pasta shared, temos as seguintes subpastas:
 
 Em resumo, a pasta shared contém código compartilhado entre vários módulos da aplicação, incluindo gerenciamento de dependências, classes de exceção personalizadas, middlewares, classes de provedores de serviços e definição de rotas. Essa abordagem permite que o código seja reutilizado em diferentes partes da aplicação, evitando a duplicação de código e reduzindo a complexidade do sistema.
 
-# Inicilização padrão api
+# Inicialização padrão api
 
 Para inicializar a API sem usar Docker e com Yarn, basta seguir os seguintes passos:
 
@@ -88,7 +88,7 @@ Este comando irá iniciar o servidor da aplicação e expor a porta 3333 para ac
 
 Com estes passos, você será capaz de executar a API de forma padrão, sem usar Docker e com Yarn. O comando yarn dev está configurado no package.json e pode ser executado com o comando yarn dev.
 
-# Inicilização com docker
+# Inicialização com docker
 
 Para inicializar a aplicação usando Docker, basta seguir os seguintes passos:
 
