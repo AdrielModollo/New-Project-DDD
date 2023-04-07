@@ -142,6 +142,8 @@ Para inicializar os testes unitários com base no package.json, basta seguir os 
 
 # Rotas
 
+O arquivo "DDD Project.postman_collection" localizado na raiz do projeto é um arquivo de coleção exportado pelo Postman. Ele contém uma lista de endpoints de API que uma aplicação pode acessar, com várias rotas disponíveis através de diferentes métodos HTTP. Segue abaixo as rotas incluídas nesta coleção:
+
 PATCH /users: Esta rota atualiza um usuário existente. Ele recebe um email de usuário como parâmetro de consulta na URL e um objeto JSON no corpo da solicitação com os campos "nome" e "senha".
 
 GET /users: Esta rota retorna uma lista de todos os usuários registrados no sistema.
