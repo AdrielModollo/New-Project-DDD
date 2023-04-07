@@ -144,17 +144,17 @@ Para inicializar os testes unitários com base no package.json, basta seguir os 
 
 O arquivo "DDD Project.postman_collection" localizado na raiz do projeto é um arquivo de coleção exportado pelo Postman. Ele contém uma lista de endpoints de API que uma aplicação pode acessar, com várias rotas disponíveis através de diferentes métodos HTTP. Segue abaixo as rotas incluídas nesta coleção:
 
-PATCH /users: Esta rota atualiza um usuário existente. Ele recebe um email de usuário como parâmetro de consulta na URL e um objeto JSON no corpo da solicitação com os campos "nome" e "senha".
+- PATCH /users: Esta rota atualiza um usuário existente. Ele recebe um email de usuário como parâmetro de consulta na URL e um objeto JSON no corpo da solicitação com os campos "nome" e "senha".
 
-GET /users: Esta rota retorna uma lista de todos os usuários registrados no sistema.
+- GET /users: Esta rota retorna uma lista de todos os usuários registrados no sistema.
 
-GET /users/email: Esta rota retorna informações sobre um usuário com base em seu endereço de e-mail. Ele recebe o endereço de e-mail como um parâmetro de consulta na URL.
+- GET /users/email: Esta rota retorna informações sobre um usuário com base em seu endereço de e-mail. Ele recebe o endereço de e-mail como um parâmetro de consulta na URL.
 
-DELETE /users: Esta rota exclui um usuário do sistema. Ele recebe um email de usuário como parâmetro de consulta na URL.
+- DELETE /users: Esta rota exclui um usuário do sistema. Ele recebe um email de usuário como parâmetro de consulta na URL.
 
-POST /users/login: Esta rota autentica um usuário e retorna um token de acesso. Ele recebe um objeto JSON no corpo da solicitação com os campos "email" e "senha".
+- POST /users/login: Esta rota autentica um usuário e retorna um token de acesso. Ele recebe um objeto JSON no corpo da solicitação com os campos "email" e "senha".
 
-POST /users: Esta rota cria um novo usuário no sistema. Ele recebe um objeto JSON no corpo da solicitação com os campos "nome", "email" e "senha". Esta rota exige autenticação JWT no cabeçalho da solicitação, onde é pré-configurada no .env.
+- POST /users: Esta rota cria um novo usuário no sistema. Ele recebe um objeto JSON no corpo da solicitação com os campos "nome", "email" e "senha". Esta rota exige autenticação JWT no cabeçalho da solicitação, onde é pré-configurada no .env.
 
 # TypeOrm
 
