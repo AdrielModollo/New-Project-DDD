@@ -60,6 +60,34 @@ Dentro da pasta shared, temos as seguintes subpastas:
 
 Em resumo, a pasta shared contém código compartilhado entre vários módulos da aplicação, incluindo gerenciamento de dependências, classes de exceção personalizadas, middlewares, classes de provedores de serviços e definição de rotas. Essa abordagem permite que o código seja reutilizado em diferentes partes da aplicação, evitando a duplicação de código e reduzindo a complexidade do sistema.
 
+# Inicilização padrão api
+
+Para inicializar a API sem usar Docker e com Yarn, basta seguir os seguintes passos:
+
+1° Certifique-se de que você possui o Yarn instalado na sua máquina. E instale as dependências do projeto usando o comando yarn:
+
+yarn
+
+2°Copie o arquivo .env.example para um arquivo .env:
+
+cp .env.example .env
+
+Configure as variáveis de ambiente da aplicação no arquivo .env criado.
+
+3° Execute as migrações do banco de dados para criar as tabelas necessárias:
+
+yarn typeorm migration:run
+
+Este comando irá executar as migrações do banco de dados.
+
+4°Inicie o servidor da aplicação com o comando abaixo:
+
+yarn dev
+
+Este comando irá iniciar o servidor da aplicação e expor a porta 3333 para acesso externo.
+
+Com estes passos, você será capaz de executar a API de forma padrão, sem usar Docker e com Yarn. O comando yarn dev está configurado no package.json e pode ser executado com o comando yarn dev.
+
 # Inicilização com docker
 
 Para inicializar a aplicação usando Docker, basta seguir os seguintes passos:
