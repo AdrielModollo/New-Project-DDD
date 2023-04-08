@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { HttpException } from '../../../../../shared/exceptions/HttpException';
+import { HttpException, HttpStatusCode } from '../../../../../shared/exceptions/HttpException';
 import { ErrorResponse } from '../../../dtos/ErrorMiddlewareDTO';
 
 export default function httpExceptionMiddleware(
@@ -16,3 +16,7 @@ export default function httpExceptionMiddleware(
         message,
     });
 }
+
+export const notFoundHandler = (req: Request, res: Response, next: NextFunction): void => {
+    next(new HttpException(HttpStatusCode.NOT_FOUND, 'Route not found'));
+};
